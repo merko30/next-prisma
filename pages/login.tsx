@@ -54,6 +54,7 @@ const Login = () => {
           onChange={onChange}
           name="email"
           label="Email"
+          containerClass="mb-2"
         />
 
         <Input
