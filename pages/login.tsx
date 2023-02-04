@@ -1,9 +1,8 @@
-"use client";
-
 import { ChangeEvent, FormEventHandler, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import error from "next/error";
+
+import Input from "@/components/Input";
 
 interface LoginInput {
   email: string;
@@ -46,21 +45,26 @@ const Login = () => {
   };
 
   return (
-    <>
-      <h1>login page</h1>
-      <form onSubmit={onSubmit}>
+    <div className="w-full md:w-1/2 lg:w-1/3 mx-auto pt-16">
+      <h1 className="text-2xl mb-4">Welcome back</h1>
+      <form onSubmit={onSubmit} className="w-full">
         {error && <p>{error}</p>}
-        <label>
-          Email
-          <input name="email" value={values.email} onChange={onChange} />
-        </label>
-        <label>
-          Password
-          <input name="password" value={values.password} onChange={onChange} />
-        </label>
+        <Input
+          value={values.email}
+          onChange={onChange}
+          name="email"
+          label="Email"
+        />
+
+        <Input
+          value={values.password}
+          onChange={onChange}
+          label="Password"
+          name="password"
+        />
         <button type="submit">Login</button>
       </form>
-    </>
+    </div>
   );
 };
 
